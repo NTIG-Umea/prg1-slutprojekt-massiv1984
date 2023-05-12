@@ -1,3 +1,9 @@
+
+
+JAG SKA VIDAREUTVECKLA MITT RITPROGRAM SOM JAG GJORDE TIDIGARE
+
+
+
 # Projekt programmering 1 2023
 
 Slutprojekt programmering 1.
