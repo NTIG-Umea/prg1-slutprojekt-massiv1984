@@ -8,6 +8,8 @@ public class Slutprojekt extends Canvas implements Runnable{
 
     private boolean running = false;
     private Thread thread;
+    int x1 = 100;
+    int y1 = 100;
     int x = 100;
     int y = 100;
     int mode = 0;
@@ -44,11 +46,13 @@ public class Slutprojekt extends Canvas implements Runnable{
         //g.clearRect(0,0,getWidth(),getHeight());
         if (mode == 1) {
             g.setColor(Color.BLACK);
-            g.fillOval(x,y,10,10);
+            //g.fillOval(x,y,10,10);
+            g.drawLine(x,y,x1,y1);
         }
         if (mode == 2) {
             g.setColor(Color.WHITE);
-            g.fillOval(x,y,30,30);
+            //g.fillOval(x,y,30,30);
+            g.drawLine(x,y,x1,y1);
         }
     }
 
@@ -100,6 +104,8 @@ public class Slutprojekt extends Canvas implements Runnable{
 
         @Override
         public void mouseDragged(MouseEvent e) {
+            x1 = x;
+            y1 = y;
             x = getMousePosition().x;
             y = getMousePosition().y;
 
