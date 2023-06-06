@@ -5,12 +5,9 @@ import java.awt.image.BufferStrategy;
 import java.util.Objects;
 
 public class Slutprojekt extends Canvas implements Runnable{
-    private BufferStrategy bs;
 
     private boolean running = false;
     private Thread thread;
-    int x1 = 100;
-    int y1 = 100;
     int x = 100;
     int y = 100;
     String mode = "None";
@@ -31,7 +28,7 @@ public class Slutprojekt extends Canvas implements Runnable{
     }
 
     public void render() {
-        bs = getBufferStrategy();
+        BufferStrategy bs = getBufferStrategy();
         if (bs == null) {
             createBufferStrategy(3);
             return;
@@ -149,8 +146,6 @@ public class Slutprojekt extends Canvas implements Runnable{
 
         @Override
         public void mouseDragged(MouseEvent e) {
-            x1 = x;
-            y1 = y;
             x = getMousePosition().x;
             y = getMousePosition().y;
 
