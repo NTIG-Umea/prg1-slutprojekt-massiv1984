@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.BufferStrategy;
+import java.util.Objects;
 
 public class Slutprojekt extends Canvas implements Runnable{
     private BufferStrategy bs;
@@ -12,10 +13,12 @@ public class Slutprojekt extends Canvas implements Runnable{
     int y1 = 100;
     int x = 100;
     int y = 100;
-    int mode = 0;
+    String mode = "None";
+    String color = "Black";
+    String[] colorchoice = { "Black", "Red", "Blue", "Green", "Yellow", "Orange", "Magenta", "Pink", "Cyan", "Grey", "Dark Grey", "White" };
     public Slutprojekt() {
         setSize(600,400);
-        JFrame frame = new JFrame();
+        JFrame frame = new JFrame("Press C for different colors");
         frame.add(this);
         this.setBackground(Color.white);
         this.addKeyListener(new MyKeyListener());
@@ -44,15 +47,57 @@ public class Slutprojekt extends Canvas implements Runnable{
 
     public void draw(Graphics g) {
         //g.clearRect(0,0,getWidth(),getHeight());
-        if (mode == 1) {
+        if (Objects.equals(mode, "Black")) {
             g.setColor(Color.BLACK);
-            //g.fillOval(x,y,10,10);
-            g.drawLine(x,y,x1,y1);
+            g.fillOval(x,y,10,10);
         }
-        if (mode == 2) {
+        if (Objects.equals(mode, "Erase")) {
             g.setColor(Color.WHITE);
-            //g.fillOval(x,y,30,30);
-            g.drawLine(x,y,x1,y1);
+            g.fillOval(x,y,40,40);
+        }
+        if (Objects.equals(mode, "Red")) {
+            g.setColor(Color.RED);
+            g.fillOval(x,y,10,10);
+        }
+        if (Objects.equals(mode, "Blue")) {
+            g.setColor(Color.BLUE);
+            g.fillOval(x,y,10,10);
+        }
+        if (Objects.equals(mode, "Green")) {
+            g.setColor(Color.GREEN);
+            g.fillOval(x,y,10,10);
+        }
+        if (Objects.equals(mode, "Yellow")) {
+            g.setColor(Color.YELLOW);
+            g.fillOval(x,y,10,10);
+        }
+        if (Objects.equals(mode, "Orange")) {
+            g.setColor(Color.ORANGE);
+            g.fillOval(x,y,10,10);
+        }
+        if (Objects.equals(mode, "Pink")) {
+            g.setColor(Color.PINK);
+            g.fillOval(x,y,10,10);
+        }
+        if (Objects.equals(mode, "Cyan")) {
+            g.setColor(Color.CYAN);
+            g.fillOval(x,y,10,10);
+        }
+        if (Objects.equals(mode, "Grey")) {
+            g.setColor(Color.GRAY);
+            g.fillOval(x,y,10,10);
+        }
+        if (Objects.equals(mode, "Dark Grey")) {
+            g.setColor(Color.DARK_GRAY);
+            g.fillOval(x,y,10,10);
+        }
+        if (Objects.equals(mode, "Magenta")) {
+            g.setColor(Color.MAGENTA);
+            g.fillOval(x,y,10,10);
+        }
+        if (Objects.equals(mode, "White")) {
+            g.setColor(Color.white);
+            g.fillOval(x,y,10,10);
         }
     }
 
@@ -128,18 +173,16 @@ public class Slutprojekt extends Canvas implements Runnable{
         @Override
         public void mousePressed(MouseEvent e) {
             if (e.getButton() == 1) {
-                mode = 1;
-
+                mode = color;
             }
             if (e.getButton() == 3) {
-                mode = 2;
+                mode = "Erase";
             }
-
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            mode = 0;
+            mode = "None";
         }
 
         @Override
@@ -159,6 +202,11 @@ public class Slutprojekt extends Canvas implements Runnable{
 
         @Override
         public void keyPressed(KeyEvent e) {
+            char ch = e.getKeyChar();
+
+            if (ch == 'c' ) {
+                color = (String) JOptionPane.showInputDialog(null, "Color", "Choose color", JOptionPane.QUESTION_MESSAGE, null, colorchoice, colorchoice[0]);
+            }
         }
 
         @Override
